@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleLoadTest": {
+      "commandName": "Project",
+      "commandLineArgs": "--target-url https://www.google.com --run-duration-seconds 10 --concurrent-requests 5 --test-summary \"test google with 5 requests for 10s\""
+    }
+  }
+}
