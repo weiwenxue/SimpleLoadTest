@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace SimpleLoadTest
@@ -137,7 +138,8 @@ namespace SimpleLoadTest
                         return false;
                     case "--target-url":
                         target_url = args[++count];
-                        if (!target_url.ToLower().StartsWith("http"))
+                        Regex regex = new Regex("^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%\\$#_]*)?$");
+                        if (!regex.IsMatch(target_url))
                         {
                             Console.WriteLine($"Invalid input: {target_url}");
                             return false;
